@@ -1,10 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    {% block head %}
+    <meta charset="utf-8">
+<!-- 设置页面的视口，让页面根据设备的宽度来自动缩放页面-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 插入到页面标题上方 -->
+{% for message in get_flashed_messages() %}
+    <div class="alert">{{ message }}</div>
+{% endfor %}
+<h2>...</h2>
+    <title>{{ user.name }}'s Watchlist</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/icon.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css">
+    {% endblock %}
 </head>
 <body>
-$END$
+    <h2>
+        <img alt="Avatar" class="avatar" src="{{ url_for('static', filename='images/head.png') }}">
+        {{ user.name }}'s Watchlist
+    </h2>
+        <p>{{ movies|length }} Titles</p>
+    <form method="post">
+        Name <input type="text" name="title" autocomplete="off" required>
+        Year <input type="text" name="year" autocomplete="off" required>
+        <input class="btn" type="submit" name="submit" value="Add">
+    </form>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+        </ul>
+    </nav>
+    {% block content %}{% endblock %}
+    <footer>
+        <small>&copy; 2023 <a href="http://helloflask.com/book/3">HelloFlask</a></small>
+    </footer>
 </body>
 </html>

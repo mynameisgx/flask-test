@@ -47,6 +47,44 @@ footer {
     height: 100px;
 }
 
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+nav li {
+    float: left;
+}
+
+nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 8px 12px;
+    text-decoration: none;
+}
+
+nav li a:hover {
+    background-color: #111;
+}
+
+.float-right {
+    float: right;
+}
+
+.imdb {
+    font-size: 12px;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+    background: #F5C518;
+    border-radius: 5px;
+    padding: 3px 5px;
+}
+
 /* 覆盖某些浏览器对 input 元素定义的字体 */
 input[type=submit] {
     font-family: inherit;
@@ -89,20 +127,7 @@ input[name=year] {
     border-radius: 5px;
 }
 
+/*让表单中的删除按钮和旁边的编辑链接排成一行*/
 .inline-form {
     display: inline;
-}
-
-.float-right {
-    float: right;
-}
-
-.imdb {
-    font-size: 12px;
-    font-weight: bold;
-    color: black;
-    text-decoration: none;
-    background: #F5C518;
-    border-radius: 5px;
-    padding: 3px 5px;
 }

@@ -62,7 +62,7 @@ def index():
         year = request.form.get('year')
         # 验证数据
         if not title or not year or len(year) > 4 or len(title) > 60:
-            flash('Invalid input.')  # 显示错误提示
+            flash('Invalid input.')  # 显示错误提示。flash() 函数用来在视图函数里向模板传递提示消息
             return redirect(url_for('index'))  # 重定向回主页
         # 保存表单数据到数据库
         movie = Movie(title=title, year=year)  # 创建记录
@@ -76,6 +76,7 @@ def index():
 
 @app.route('/movie/edit/<int:movie_id>', methods=['GET', 'POST'])
 def edit(movie_id):
+    #查询的时候，我们使用了 get_or_404() 方法，它会返回对应主键的记录，如果没有找到，则返回 404 错误响应。
     movie = Movie.query.get_or_404(movie_id)
 
     if request.method == 'POST':  # 处理编辑表单的提交请求
